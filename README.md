@@ -1,2 +1,4 @@
 # Chrome-Extension
-Still in search for a good idea. Template taken from an article of freecodecamp's. Waiting for better knowledge of CSS, HTML and JavaScript before further procedure.
+My simple Chrome Extension of Focus Timer
+You can set the amount of time for the timer and click "Set" to run the timer
+Currently ner development
