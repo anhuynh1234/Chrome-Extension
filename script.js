@@ -1,5 +1,5 @@
 let timerStart = false
-let timerSeconds = 0, timerMinutes = 0, seconds = 0, minutes = 0
+let seconds = 0, minutes = 0
 
 const minute = document.querySelector('#minute')
 const second = document.querySelector('#second')
@@ -18,9 +18,13 @@ button.onclick = () => {
         seconds = 0
     }else {
         if(minute.valueAsNumber || second.valueAsNumber) {
+            if(minute.valueAsNumber < 0 || second.valueAsNumber < 0) {
+                return
+            }
+
             button.innerText = 'Stop'
-            timerMinutes = (isNaN(minute.valueAsNumber) ? 0 : minute.valueAsNumber) + Math.floor(second.valueAsNumber / 60)
-            timerSeconds = (isNaN(second.valueAsNumber) ? 0 : second.valueAsNumber) % 60
+            minutes = (isNaN(minute.valueAsNumber) ? 0 : minute.valueAsNumber) + Math.floor((isNaN(second.valueAsNumber) ? 0 : second.valueAsNumber) / 60)
+            seconds = (isNaN(second.valueAsNumber) ? 0 : second.valueAsNumber) % 60
             timer.style.display = ''
         }else {
             timerStart = true;
@@ -36,18 +40,19 @@ function timerRun() {
         return
     }
 
-    seconds++
-    if(seconds == 60) {
-        minutes++
-        seconds = 0
+    if(seconds > 0) {
+        seconds--
+    }else {
+        if(minutes > 0) {
+            seconds = 59
+            minutes-- 
+        }
     }
 
-    if(seconds == timerSeconds && minutes == timerMinutes) {
+    if(seconds == 0 && minutes == 0) {
         window.alert('Timer ends')
         timerStart = false
         button.innerText = 'Set'
-        timerMinutes = 0
-        timerSeconds = 0
         minutes = 0
         seconds = 0
         timer.style.display = 'none'
@@ -55,5 +60,5 @@ function timerRun() {
         second.value = ''
     }
 
-    timer.innerText = `${minutes}:${seconds}`
+    timer.innerText = `${minutes}:${Math.floor(seconds / 10) > 0 ? seconds : `0${seconds}`}`
 }
