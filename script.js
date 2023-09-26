@@ -12,8 +12,6 @@ button.onclick = () => {
         timer.style.display = 'none'
         minute.value = ''
         second.value = ''
-        timerMinutes = 0
-        timerSeconds = 0
         minutes = 0
         seconds = 0
     }else {
