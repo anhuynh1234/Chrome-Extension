@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Timer",
+  "description": "Timer Chrome Extension",
+  "version": "0.0.0.1",
+  "icons": {
+    "16": "images/timer.jpeg",
+    "32": "images/timer.jpeg",
+    "48": "images/timer.jpeg",
+    "128": "images/timer.jpeg"
+  },
+  "action":{
+    "default_popup": "index.html",
+    "default_title": "Timer App"
+}
+}
